@@ -63,6 +63,18 @@ public class App {
 							System.out.println("아이디를 입력해주세요.");
 							continue;
 						}
+						SecSql sql = new SecSql();
+						
+						sql.append("SELECT COUNT(*)>0");
+						sql.append("FROM `member`");
+						sql.append("WHERE loginId = ?", loginId);
+						
+						boolean idDupChk = DBUtil.selectRowBooleanValue(conn, sql);
+						
+						if(idDupChk) {
+							System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
+							continue;
+						}
 						break;
 					}
 					while (true) {
