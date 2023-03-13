@@ -1,7 +1,9 @@
+#DB 생성, 삭제, 사용
 DROP DATABASE IF EXISTS jdbc_article_manager;
 CREATE DATABASE jdbc_article_manager;
 USE jdbc_article_manager;
 
+#article 테이블  생성
 CREATE TABLE article(
 	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	regDate DATETIME NOT NULL,
@@ -10,11 +12,31 @@ CREATE TABLE article(
 	`body` TEXT NOT NULL
 );
 
+#member 테이블 생성
+CREATE TABLE `member`(
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	updateDate DATETIME NOT NULL,
+	logintId VARCHAR(50) NOT NULL,
+	loginPw VARCHAR(50) NOT NULL,
+	`name` VARCHAR(50) NOT NULL
+);
+
+#article 데이터 랜덤생성
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 title = CONCAT('제목', RAND()),
 `body` = CONCAT('내용', RAND());
 
+#member 데이터 랜덤생성
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test'
+loginPw = 'test'
+`name` = 'test'
+
 DESC article;
 SELECT * FROM article;
+SELECT * FROM MEMBER;
