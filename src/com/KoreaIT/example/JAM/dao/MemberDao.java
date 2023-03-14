@@ -6,18 +6,19 @@ import com.KoreaIT.example.JAM.util.DBUtil;
 import com.KoreaIT.example.JAM.util.SecSql;
 
 public class MemberDao {
-	private static  Connection conn;
+	private static Connection conn;
+
 	public MemberDao(Connection conn) {
-		MemberDao.conn = conn;
+		this.conn = conn;
 	}
 
 	public static boolean idDupChk(String loginId) {
 		SecSql sql = new SecSql();
-		
+
 		sql.append("SELECT COUNT(*)>0");
 		sql.append("FROM `member`");
 		sql.append("WHERE loginId = ?", loginId);
-		
+
 		return DBUtil.selectRowBooleanValue(conn, sql);
 	}
 
@@ -32,7 +33,7 @@ public class MemberDao {
 		sql.append(", `name` = ?", name);
 
 		DBUtil.insert(conn, sql);
-		
+
 	}
-	
+
 }

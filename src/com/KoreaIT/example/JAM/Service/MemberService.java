@@ -6,9 +6,8 @@ import com.KoreaIT.example.JAM.dao.MemberDao;
 
 public class MemberService {
 	MemberDao memberDao;
-	Connection conn;
+	
 	public MemberService(Connection conn) {
-		this.conn = conn;
 		memberDao = new MemberDao(conn);
 	}
 

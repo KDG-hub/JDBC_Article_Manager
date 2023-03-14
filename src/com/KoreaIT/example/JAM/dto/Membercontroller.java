@@ -7,14 +7,13 @@ import com.KoreaIT.example.JAM.Service.MemberService;
 
 public class Membercontroller {
 	private Scanner sc;
-	
 	MemberService memberService;
-	
-	 public Membercontroller(Connection conn, Scanner sc) {
-		 this.memberService = new MemberService(conn);
-			this.sc = sc;
-		}
-	
+
+	public Membercontroller(Connection conn, Scanner sc) {
+		this.memberService = new MemberService(conn);
+		this.sc = sc;
+	}
+
 	public void join() {
 		System.out.println("== 회원가입 ==");
 
@@ -22,7 +21,7 @@ public class Membercontroller {
 		String loginPw = null;
 		String loginPwChk = null;
 		String name = null;
-		
+
 		while (true) {
 			System.out.printf("로그인 아이디 : ");
 			loginId = sc.nextLine().trim();
@@ -31,10 +30,10 @@ public class Membercontroller {
 				System.out.println("아이디를 입력해주세요.");
 				continue;
 			}
-			
+
 			boolean idDupChk = memberService.idDupChk(loginId);
-			
-			if(idDupChk) {
+
+			if (idDupChk) {
 				System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
 				continue;
 			}
@@ -75,7 +74,7 @@ public class Membercontroller {
 			}
 			break;
 		}
-		memberService.insert(loginId,loginPw, name);
+		memberService.insert(loginId, loginPw, name);
 
 		System.out.printf("%s회원님 가입을 환영합니다\n", name);
 
