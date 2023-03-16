@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
+import com.KoreaIT.example.Dto.Article;
 import com.KoreaIT.example.JAM.dao.ArticleDao;
 
 public class ArticleService {
@@ -14,8 +15,8 @@ public class ArticleService {
 		articleDao = new ArticleDao(conn);
 	}
 
-	public int write(String title, String body) {
-		return articleDao.write(title, body);
+	public int write(String title, String body, int memberId) {
+		return articleDao.write(title, body, memberId);
 	}
 
 	public List<Map<String, Object>> list() {
@@ -35,8 +36,15 @@ public class ArticleService {
 
 	}
 
-	public Map<String, Object> detail(int id) {
-		return articleDao.detail(id);
+	public Article detail(int id) {
+		
+		Map<String, Object> articleMap = articleDao.detail(id);
+		
+		if (articleMap.isEmpty()) {
+			return null;
+		}
+		
+		return new Article(articleMap);
 	}
 
 }

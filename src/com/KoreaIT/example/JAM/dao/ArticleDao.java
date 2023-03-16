@@ -14,7 +14,7 @@ public class ArticleDao {
 		this.conn = conn;
 	}
 
-	public int write(String title, String body) {
+	public int write(String title, String body, int memberId) {
 		SecSql sql = new SecSql();
 
 		sql.append("INSERT INTO article");
@@ -22,6 +22,7 @@ public class ArticleDao {
 		sql.append(", updateDate = NOW()");
 		sql.append(", title = ?", title);
 		sql.append(", `body` = ?", body);
+		sql.append(", memberId = ?", memberId);
 
 		return DBUtil.insert(conn, sql);
 	}
@@ -31,7 +32,9 @@ public class ArticleDao {
 
 		sql.append("SELECT *");
 		sql.append("FROM article");
-		sql.append("ORDER BY id DESC");
+		sql.append("INNER JOIN `member` AS m");
+		sql.append("ON article.memberId = m.id");
+		sql.append("ORDER BY article.id DESC");
 		return DBUtil.selectRows(conn, sql);
 	}
 
@@ -72,7 +75,9 @@ public class ArticleDao {
 
 		sql.append("SELECT *");
 		sql.append("FROM article");
-		sql.append("WHERE id = ?", id);
+		sql.append("INNER JOIN `member` AS m");
+		sql.append("ON article.memberId = m.id");
+		sql.append("WHERE article.id = ?", id);
 
 		return DBUtil.selectRow(conn, sql);
 	}

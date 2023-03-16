@@ -1,7 +1,10 @@
 package com.KoreaIT.example.JAM.Service;
 
-import java.sql.Connection;
 
+import java.sql.Connection;
+import java.util.Map;
+
+import com.KoreaIT.example.Dto.Member;
 import com.KoreaIT.example.JAM.dao.MemberDao;
 
 public class MemberService {
@@ -19,4 +22,13 @@ public class MemberService {
 		memberDao.insert( loginId,  loginPw,  name);
 	}
 
-}
+	public Member getMember(String loginId) {
+		Map<String, Object> memberMap = memberDao.getMember(loginId);
+		
+		if (memberMap.isEmpty()) {
+			return null;
+		}
+		
+		return new Member(memberMap);
+	}
+	}

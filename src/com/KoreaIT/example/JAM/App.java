@@ -28,20 +28,24 @@ public class App {
 				String cmd = sc.nextLine().trim();
 
 				if (cmd.equals("article write")) {
-					articlecontroller.write();
-
-				} else if (cmd.equals("member join")) {
-					membercontroller.join();
+					articlecontroller.doWrite();
 				} else if (cmd.equals("article list")) {
-					articlecontroller.list();
-
+					articlecontroller.showList();
 				} else if (cmd.startsWith("article modify ")) {
-					articlecontroller.modify(cmd);
+					articlecontroller.doModify(cmd);
 				} else if (cmd.startsWith("article delete")) {
-					articlecontroller.delete(cmd);
+					articlecontroller.doDelete(cmd);
 				} else if (cmd.startsWith("article detail ")) {
-					articlecontroller.detail(cmd);
-				} else if (cmd.equals("exit")) {
+					articlecontroller.showDetail(cmd);
+				} else if (cmd.equals("member join")) {
+					membercontroller.doJoin();
+				} else if (cmd.equals("member login")) {
+					membercontroller.doLogin();
+				} else if (cmd.equals("member logout")) {
+					membercontroller.doLogout();
+				} else if (cmd.equals("member profile")) {
+					membercontroller.showProfile();
+				} 	else if (cmd.equals("exit")) {
 					System.out.println("==프로그램 종료==");
 					break;
 				} else {
