@@ -23,13 +23,4 @@ public class Article {
 		this.memberId = (int) articleMap.get("memberId");
 		this.views = (int) articleMap.get("views");
 	}
-
-	
-	
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", regDate=" + regDate + ", updateDate=" + updateDate + ", title=" + title
-				+ ", body=" + body + "]";
-	}
-	
 }

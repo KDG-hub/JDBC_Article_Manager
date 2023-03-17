@@ -33,7 +33,7 @@ public class App {
 					articlecontroller.showList(cmd);
 				} else if (cmd.startsWith("article modify ")) {
 					articlecontroller.doModify(cmd);
-				} else if (cmd.startsWith("article delete")) {
+				} else if (cmd.startsWith("article delete ")) {
 					articlecontroller.doDelete(cmd);
 				} else if (cmd.startsWith("article detail ")) {
 					articlecontroller.showDetail(cmd);

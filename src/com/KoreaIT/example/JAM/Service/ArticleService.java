@@ -19,8 +19,8 @@ public class ArticleService {
 		return articleDao.write(title, body, memberId);
 	}
 
-	public List<Map<String, Object>> list() {
-		return articleDao.list();
+	public List<Map<String, Object>> getArticles(String keyword) {
+		return articleDao.getArticles(keyword);
 	}
 
 	public int articleCount(int id) {
@@ -47,12 +47,9 @@ public class ArticleService {
 		return new Article(articleMap);
 	}
 
-	public List<Map<String, Object>> searchKeyword(String keyword) {
-		return articleDao.searchKeyword(keyword);
-	}
 
-	public void upViews(int id) {
-		articleDao.upViews(id);
+	public void viewCount(int id) {
+		articleDao.viewCount(id);
 	}
 
 }

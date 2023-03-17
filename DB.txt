@@ -39,7 +39,9 @@ loginId = 'test',
 loginPw = 'test',
 `name` = 'test';
 
+#칼럼 추가
 ALTER TABLE article ADD COLUMN memberId INT UNSIGNED NOT NULL; 
+ALTER TABLE article ADD COLUMN views INT UNSIGNED NOT NULL;
 
 DESC article;
 DESC `member`;
