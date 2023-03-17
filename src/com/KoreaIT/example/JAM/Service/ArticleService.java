@@ -36,15 +36,23 @@ public class ArticleService {
 
 	}
 
-	public Article detail(int id) {
+	public Article getArticle(int id) {
 		
-		Map<String, Object> articleMap = articleDao.detail(id);
+		Map<String, Object> articleMap = articleDao.getArticle(id);
 		
 		if (articleMap.isEmpty()) {
 			return null;
 		}
 		
 		return new Article(articleMap);
+	}
+
+	public List<Map<String, Object>> searchKeyword(String keyword) {
+		return articleDao.searchKeyword(keyword);
+	}
+
+	public void upViews(int id) {
+		articleDao.upViews(id);
 	}
 
 }

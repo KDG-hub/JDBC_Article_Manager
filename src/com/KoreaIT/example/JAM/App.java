@@ -29,8 +29,8 @@ public class App {
 
 				if (cmd.equals("article write")) {
 					articlecontroller.doWrite();
-				} else if (cmd.equals("article list")) {
-					articlecontroller.showList();
+				} else if (cmd.startsWith("article list")) {
+					articlecontroller.showList(cmd);
 				} else if (cmd.startsWith("article modify ")) {
 					articlecontroller.doModify(cmd);
 				} else if (cmd.startsWith("article delete")) {

@@ -11,6 +11,7 @@ public class Article {
 	public String title;
 	public String body;
 	public String name;
+	public int views;
 	
 	public Article(Map<String, Object> articleMap) {
 		this.id = (int) articleMap.get("id");
@@ -20,6 +21,7 @@ public class Article {
 		this.body = (String) articleMap.get("body");
 		this.name = (String) articleMap.get("name");
 		this.memberId = (int) articleMap.get("memberId");
+		this.views = (int) articleMap.get("views");
 	}
 
 	
