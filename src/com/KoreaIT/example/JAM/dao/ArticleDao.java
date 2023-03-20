@@ -35,7 +35,7 @@ public class ArticleDao {
 		sql.append("INNER JOIN `member` AS m");
 		sql.append("ON article.memberId = m.id");
 		if (keyword.length() > 0) {
-		sql.append("WHERE title like '%".concat(?+"%'") , keyword);
+			sql.append("WHERE title like CONCAT('%',?,'%')", keyword);
 		}
 		sql.append("ORDER BY article.id DESC");
 		return DBUtil.selectRows(conn, sql);
